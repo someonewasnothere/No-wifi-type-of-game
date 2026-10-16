@@ -1,0 +1,24 @@
+from pyray import *
+import raylib as rl
+
+
+raylib.InitWindow(1280 , 720, b"aadada")
+x_pos = 600
+y_pos = 360
+
+while not window_should_close():
+    begin_drawing()
+    clear_background(RAYWHITE)
+    if is_key_down(rl.KEY_UP):
+        y_pos -= 0.1
+    if is_key_down(rl.KEY_DOWN):
+        y_pos += 0.1
+    if is_key_down(rl.KEY_LEFT):
+        x_pos -= 0.1
+    if is_key_down(rl.KEY_RIGHT):
+        x_pos += 0.1
+    draw_circle(int(x_pos), int(y_pos), 50, RED) 
+    draw_line(100, 200, 500, 800, YELLOW)
+    if is_key_pressed(rl.KEY_SPACE):
+        close_window()
+    end_drawing()
