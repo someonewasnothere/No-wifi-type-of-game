@@ -1,0 +1,53 @@
+#score {
+    text-align: center;
+}
+
+#game {
+    width: 600px;
+    height: 300px;
+    border: 2px solid black;
+    margin: auto;
+    background-image: url('../assets/mountain background.png');
+    background-size: cover;
+}
+
+
+
+#stickman {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    top: 200px;
+
+    background-image: url('../assets/stickman.png');
+    background-size: cover;
+    animation: jump 0.5s;
+}
+
+#rock {
+    width: 85px;
+    height: 70px;
+    position: relative;
+    top: 140px;
+    left: 515px;
+    background-image: url('../assets/rock.png');
+    background-size: cover;
+    animation: rock 1.33s infinite;
+   
+}
+
+@keyframes rock {
+    0% {left: 515px;}
+    100% {left: -75px;}
+}
+
+.jump {
+    animation: jump 0.5s;
+}
+
+@keyframes jump {
+    0% {top: 200px;}
+    50% {top: 100px;}
+    75% {top: 100px;}
+    100% {top: 200px;}
+}
