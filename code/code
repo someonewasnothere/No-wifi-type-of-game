@@ -3,13 +3,13 @@ import raylib as rl
 
 
 rl.InitWindow(1280 , 720, b"aadada")
-character_texture = load_texture(b"assets/mamdani.png")
+character_texture = load_texture(b"assets/idle stickman.png")
 x_pos = 600
 y_pos = 360
 
 while not window_should_close():
     begin_drawing()
-    clear_background(RAYWHITE)
+    clear_background(WHITE)
     if is_key_down(rl.KEY_UP):
         y_pos -= 0.1
     if is_key_down(rl.KEY_DOWN):
