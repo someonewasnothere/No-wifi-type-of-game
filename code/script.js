@@ -1,9 +1,15 @@
-const stickman = document.getElementById('stickman'); 
-const rock = document.getElementById('rock'); 
-const score = document.getElementById('score'); 
+const game = document.getElementById('game');
+const stickman = document.getElementById('stickman');
+const rock = document.getElementById('rock');
+const score = document.getElementById('score');
+const message = document.getElementById('message');
+const restartButton = document.getElementById('restart');
+
+let gameScore = 0;
+let gameRunning = true;
 
 function jump() {
-    if (stickman.classList.contains('jump-animation')) return;
+    if (!gameRunning || stickman.classList.contains('jump-animation')) return;
     stickman.classList.add('jump-animation');
 }
 
@@ -18,19 +24,49 @@ document.addEventListener('keydown', (event) => {
     }
 });
 
+rock.addEventListener('animationiteration', () => {
+    if (!gameRunning) return;
 
-setInterval(() => {
-    const stickmanTop = parseInt(window.getComputedStyle(stickman).getPropertyValue('top'));
-    const rockLeft = parseInt(window.getComputedStyle(rock).getPropertyValue('left'));
+    gameScore += 1;
+    score.textContent = `Score: ${gameScore}`;
+});
 
-    if (rockLeft < 50 && rockLeft > 0 && stickmanTop >= 150) {
-        alert('Game Over! Your score: ' + score.innerText);
-        score.innerText = 0;
-        rock.style.animation = 'none';
-        rock.offsetHeight; // Trigger reflow
-        rock.style.animation = null;
-    } else {
-        score.innerText = parseInt(score.innerText) + 1;
+function checkCollision() {
+    if (!gameRunning) return;
+
+    const stickmanBounds = stickman.getBoundingClientRect();
+    const rockBounds = rock.getBoundingClientRect();
+    const collided = stickmanBounds.right > rockBounds.left
+        && stickmanBounds.left < rockBounds.right
+        && stickmanBounds.bottom > rockBounds.top
+        && stickmanBounds.top < rockBounds.bottom;
+
+    if (collided) {
+        gameRunning = false;
+        game.classList.add('game-over');
+        message.textContent = `Game over! Final score: ${gameScore}.`;
+        restartButton.hidden = false;
+        return;
     }
-}, 100);    
 
+    requestAnimationFrame(checkCollision);
+}
+
+function restartGame() {
+    gameScore = 0;
+    gameRunning = true;
+    score.textContent = 'Score: 0';
+    message.textContent = 'Jump over the rock!';
+    restartButton.hidden = true;
+    stickman.classList.remove('jump-animation');
+    game.classList.remove('game-over');
+
+    rock.style.animation = 'none';
+    rock.offsetWidth;
+    rock.style.removeProperty('animation');
+
+    requestAnimationFrame(checkCollision);
+}
+
+restartButton.addEventListener('click', restartGame);
+requestAnimationFrame(checkCollision);

@@ -5,48 +5,117 @@
 #game {
     width: 600px;
     height: 300px;
+    position: relative;
+    overflow: hidden;
     border: 2px solid black;
     margin: auto;
     background-image: url('../assets/mountain background.png');
     background-size: cover;
 }
 
-
-
 #stickman {
     width: 100px;
     height: 100px;
-    position: relative;
-    top: 200px;
-
+    position: absolute;
+    bottom: 0;
+    left: 20px;
     background-image: url('../assets/stickman.png');
     background-size: cover;
+    transform-origin: center bottom;
+    animation: run 0.32s ease-in-out infinite;
+}
+
+@keyframes run {
+    0%, 100% {
+        translate: 0 0;
+        rotate: -3deg;
+    }
+    50% {
+        translate: 0 -5px;
+        rotate: 3deg;
+    }
 }
 
 #rock {
     width: 85px;
     height: 70px;
-    position: relative;
-    top: 140px;
+    position: absolute;
+    bottom: 0;
     left: 515px;
     background-image: url('../assets/rock.png');
     background-size: cover;
     animation: rock 1.33s infinite;
-   
 }
 
 @keyframes rock {
     0% {left: 515px;}
-    100% {left: -75px;}
+    100% {left: -85px;}
+}
+
+#game.game-over #rock {
+    animation-play-state: paused;
+}
+
+#game.game-over #stickman {
+    animation-play-state: paused;
+}
+
+#message,
+#restart {
+    display: block;
+    margin: 12px auto;
+    text-align: center;
+}
+
+#restart[hidden] {
+    display: none;
 }
 
 .jump-animation {
-    animation: jump 0.5s;
+    animation: jump 1.1s;
+}
+
+#stickman.jump-animation {
+    animation: run 0.32s ease-in-out infinite, jump 1.1s;
 }
 
 @keyframes jump {
-    0% {top: 200px;}
-    50% {top: 100px;}
-    75% {top: 100px;}
-    100% {top: 200px;}
+    0%, 100% {transform: translateY(0);}
+    15%, 80% {transform: translateY(-120px);}
+}
+
+.scroll-container {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+}
+
+.scroll-track {
+    display: flex;
+    width: max-content;
+    height: 100%;
+    animation: scroll-left-to-right 20s linear infinite;
+}
+
+.scroll-img {
+    flex: 0 0 600px;
+    width: 600px;
+    height: 100%;
+    object-fit: cover;
+    margin-left: -50px;
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 50px, #000 calc(100% - 50px), transparent);
+    mask-image: linear-gradient(to right, transparent, #000 50px, #000 calc(100% - 50px), transparent);
+}
+
+.scroll-img:first-child {
+    margin-left: 0;
+}
+
+@keyframes scroll-left-to-right {
+    from {
+        transform: translateX(-1100px);
+    }
+    to {
+        transform: translateX(-550px);
+    }
 }
