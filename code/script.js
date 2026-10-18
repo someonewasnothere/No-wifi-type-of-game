@@ -18,7 +18,7 @@ document.addEventListener('keydown', (event) => {
     }
 });
 
-/*
+
 setInterval(() => {
     const stickmanTop = parseInt(window.getComputedStyle(stickman).getPropertyValue('top'));
     const rockLeft = parseInt(window.getComputedStyle(rock).getPropertyValue('left'));
@@ -34,4 +34,3 @@ setInterval(() => {
     }
 }, 100);    
 
-*/
