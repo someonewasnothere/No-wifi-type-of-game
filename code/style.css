@@ -21,7 +21,6 @@
 
     background-image: url('../assets/stickman.png');
     background-size: cover;
-    animation: jump 0.5s;
 }
 
 #rock {
@@ -41,7 +40,7 @@
     100% {left: -75px;}
 }
 
-.jump {
+.jump-animation {
     animation: jump 0.5s;
 }
 
