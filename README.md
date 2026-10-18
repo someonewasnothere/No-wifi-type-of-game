@@ -9,3 +9,4 @@ Not sure if I am allowed to take images from the internet so ill be open and say
 
 
 Credits to Kris Foster's tutorial on this, it fr carried me
+This took so long and I honestly don't even understand any of the code. I might have to switch from coding random stuff to learning first and just do websites instead of trying to wing a game lol
