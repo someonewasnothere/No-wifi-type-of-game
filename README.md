@@ -1,8 +1,46 @@
-#dope game
-pretty straightforward controls:
+CONTROLS:
     -space bar or up arrow key = jump
     -jump over the rock to increase your score
     -if you hit the rock, use the Play again button to restart
+        -hitting the rock ends your run
+
+HOW TO RUN:
+    -You can run this in a browser with the demo link, because this can be ran with html
+
+WHAT IS THIS:
+    -Image the no wifi dino game but its a stickman, a rock, and a background.
+    -You are a stickman that jumps over the same rock over and over again with a dope background in the back
+    -the idea wass to have a better replica of the dino game, turns out, this is hard.
+        -just a static stickman image that jiggles when it jumps
+        -custom background that I am proud of 
+        -rock
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 I redid this like 3 times lol
 I just redid the no wifi dino game but with a new character, a rock, and a background
